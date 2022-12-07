@@ -17,7 +17,7 @@ use App\Http\Controllers\WallpaperController;
 |
 */
 
-
+Route::group(['middleware' => 'auth'], function () {
 
 // Route for cat :
 Route::get('/catList', 'App\Http\Controllers\CatController@cat_list');
@@ -48,7 +48,7 @@ Route::post('/addWp', "App\Http\Controllers\WallpaperController@add_wp");
 Route::post('/updateWp', 'App\Http\Controllers\WallpaperController@update_wp');
 Route::post('/delWp', 'App\Http\Controllers\WallpaperController@del_wp');
 
-
+});
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
